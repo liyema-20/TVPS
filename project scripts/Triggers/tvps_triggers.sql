@@ -1,0 +1,12 @@
+USE tvps;
+
+DELIMITER //
+
+CREATE TRIGGER stockCheck BEFORE UPDATE 
+ON pet 
+FOR EACH ROW 
+IF NEW.petAmount < 0 THEN
+SET NEW.petAmount = 0;
+END IF; //
+
+DELIMITER ;
